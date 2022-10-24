@@ -1,5 +1,6 @@
 // Import stylesheets
-//import './style.css';
+import './style.css';
+
 // Firebase App (the core Firebase SDK) is always required
 import { initializeApp, firebase } from 'firebase/app';
 
@@ -26,7 +27,7 @@ import * as firebaseui from 'firebaseui';
 const startRsvpButton = document.getElementById('startRsvp');
 const guestbookContainer = document.getElementById('guestbook-container');
 
-const form = document.getElementById('leave-message');
+const form = document.getElementById('postForm');
 const title = document.getElementById('title');
 const body = document.getElementById('body');
 const postSection = document.getElementById('postSection');
@@ -115,6 +116,7 @@ async function main() {
 
   // Listen to the form submission
   form.addEventListener('submit', async (e) => {
+	  console.log("SUbmit...")
     // Prevent the default form redirect
     e.preventDefault();
     // Write a new message to the database collection "guestbook"
@@ -145,23 +147,33 @@ async function main() {
     // Loop through documents in database
 
     snaps.forEach((doc) => {
-      const entry = document.createElement('div');
-      entry.className = 'entry';
+      console.log('Adding...:');
+      
+      
+      // Zeile 1
+      const span1 = document.createElement('span');
+      span1.textContent = doc.data().title;
+      span1.class = 'w3-large';
 
-      const line1 = document.createElement('div');
-      line1.textContent = doc.data().title;
-      line1.className = 'title';
-      entry.appendChild(line1);
+      const br = document.createElement('br');
+      
+      // Zeile 2
+      const span2 = document.createElement('span');
+      span2.textContent = doc.data().body;
 
-      const line2 = document.createElement('div');
-      line2.textContent = doc.data().body;
-      line2.className = 'body';
-      entry.appendChild(line2);
+	  const div = document.createElement('div');
+      div.className = 'w3-bar-item';
+      
+	  div.appendChild(span1);
+      div.appendChild(br);
+      div.appendChild(span2);
+	  
+	  const li = document.createElement('li');
+      li.className = 'w3-bar';
+	  li.appendChild(div);
 
-      const ruler = document.createElement('hr');
-      entry.appendChild(ruler);
-
-      postSection.appendChild(entry);
+      postSection.appendChild(li);	  
+      
     });
   });
 }
