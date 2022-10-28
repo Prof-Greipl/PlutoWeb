@@ -10,6 +10,7 @@ import {
   EmailAuthProvider,
   signOut,
   onAuthStateChanged,
+  connectAuthEmulator,
 } from 'firebase/auth';
 
 import {
@@ -19,6 +20,7 @@ import {
   query,
   orderBy,
   onSnapshot,
+  connectFirestoreEmulator
 } from 'firebase/firestore';
 
 import * as firebaseui from 'firebaseui';
@@ -58,7 +60,11 @@ async function main() {
   initializeApp(firebaseConfig);
 
   auth = getAuth();
+  connectAuthEmulator(auth, "http://localhost:9099");
+
   db = getFirestore();
+  connectFirestoreEmulator(db, 'localhost', 8080);
+  console.log("Connected to Emulator!")
 
   // FirebaseUI config
   const uiConfig = {
