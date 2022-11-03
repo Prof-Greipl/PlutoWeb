@@ -40,10 +40,57 @@ const buPost = document.getElementById('buPost');
 const buManageAccount = document.getElementById('buManageAccount');
 const buSubmit = document.getElementById('buSubmit');
 
-let rsvpListener = null;
-let guestbookListener = null;
+buSignIn.addEventListener('click', () => {
+  if (auth.currentUser) {
+    // User is signed in; allows user to sign out
+    signOut(auth);
+  } else {
+    // No user is signed in; allows user to sign in
+    ui.start('#firebaseui-auth-container', uiConfig);
+  }
+});
+
+buSignOut.addEventListener('click', () => {
+  if (auth.currentUser) {
+    // User is signed in; allows user to sign out
+    signOut(auth);
+  } else {
+    // No user is signed in; allows user to sign in
+    ui.start('#firebaseui-auth-container', uiConfig);
+  }
+});
+
 
 let db, auth;
+
+
+function createPostLi(title, body){
+
+  const span1 = document.createElement('span');
+  span1.textContent = title;
+  span1.class = 'w3-large';
+
+  const br = document.createElement('br');
+
+  // Zeile 2
+  const span2 = document.createElement('span');
+  span2.textContent = body;
+
+  const div = document.createElement('div');
+  div.className = 'w3-bar-item';
+
+  div.appendChild(span1);
+  div.appendChild(br);
+  div.appendChild(span2);
+
+  const li = document.createElement('li');
+  li.className = 'w3-bar';
+  li.appendChild(div);
+
+  return li;
+
+};
+
 
 async function main() {
   // Add Firebase project configuration object here
@@ -86,26 +133,9 @@ async function main() {
 
   // Event Listener for Buttons
 
-  buSignIn.addEventListener('click', () => {
-    if (auth.currentUser) {
-      // User is signed in; allows user to sign out
-      signOut(auth);
-    } else {
-      // No user is signed in; allows user to sign in
-      ui.start('#firebaseui-auth-container', uiConfig);
-    }
-  });
+  
 
-  buSignOut.addEventListener('click', () => {
-    if (auth.currentUser) {
-      // User is signed in; allows user to sign out
-      signOut(auth);
-    } else {
-      // No user is signed in; allows user to sign in
-      ui.start('#firebaseui-auth-container', uiConfig);
-    }
-  });
-
+  /*
   onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log('onAuthStateChanged: User present');
@@ -120,9 +150,10 @@ async function main() {
     }
   });
 
+  
   // Listen to the form submission
   form.addEventListener('submit', async (e) => {
-	  console.log("SUbmit...")
+    console.log("SUbmit...")
     // Prevent the default form redirect
     e.preventDefault();
     // Write a new message to the database collection "guestbook"
@@ -145,6 +176,8 @@ async function main() {
     return false;
   });
 
+
+
   // Create query for messages
   const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
   onSnapshot(q, (snaps) => {
@@ -154,36 +187,39 @@ async function main() {
 
     snaps.forEach((doc) => {
       console.log('Adding...:');
-      
-      
+
+
       // Zeile 1
       const span1 = document.createElement('span');
       span1.textContent = doc.data().title;
       span1.class = 'w3-large';
 
       const br = document.createElement('br');
-      
+
       // Zeile 2
       const span2 = document.createElement('span');
       span2.textContent = doc.data().body;
 
-	  const div = document.createElement('div');
+      const div = document.createElement('div');
       div.className = 'w3-bar-item';
-      
-	  div.appendChild(span1);
+
+      div.appendChild(span1);
       div.appendChild(br);
       div.appendChild(span2);
-	  
-	  const li = document.createElement('li');
-      li.className = 'w3-bar';
-	  li.appendChild(div);
 
-      postSection.appendChild(li);	  
-      
+      const li = document.createElement('li');
+      li.className = 'w3-bar';
+      li.appendChild(div);
+
+      postSection.appendChild(li);
+
     });
   });
+  */
 }
 
 main();
 title.value = 'Hans';
 body.value = 'Lore Ipsum se...';
+const li1 = createPostLi("Titel", "Body");
+postSection.appendChild(li1);

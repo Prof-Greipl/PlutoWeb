@@ -1,0 +1,283 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>PlutoWeb-23</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto:300,400,700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+  <div class="container" style="margin-top:20px">
+
+    <!-- Navbar  https://getbootstrap.com/docs/5.0/components/navbar/ -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Pluto23 Web</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1"
+        aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav1">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="nav_sign_out">Sign Out</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="nav_sign_in">Sign In</a>
+          </li>
+          <li class="nav-item">
+           <!-- a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Account</a -->
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" id="nav_account">Account</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Bereich: areaSignIn -->
+    <div id="areaSignIn">
+      <h3 style="margin-top:20px">Sign In</h3>
+      <form id="signInForm">
+        <div class="mb-3">
+          <label for="si_email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="si_email" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">area-describedby Text</div>
+        </div>
+        <div class="mb-3">
+          <label for="si_password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="si_password">
+        </div>
+        <button type="submit" class="btn btn-primary" id="si_button_sign_in">Sign In</button>
+        <button type="button" class="btn btn-link" id="si_button_create_account">Create Account</button>
+      </form>
+    </div>
+
+
+    <!-- Bereich: areaCreateAccount -->
+    <div id="areaCreateAccount">
+      <h3 style="margin-top:20px">Create Account</h3>
+      <form id="createAccountInForm">
+        <div class="mb-3">
+          <label for="signInEmail" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="signInEmail" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="signInPassword" class="form-label">Password (min 6 characters)</label>
+          <input type="password" class="form-control" id="signInPassword">
+        </div>
+        <div class="mb-3">
+          <label for="signInPassword1" class="form-label">Repeat Password</label>
+          <input type="password" class="form-control" id="signInPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary" id="buttonCreateAccount">Create Account</button>
+        <button type="submit" class="btn btn-primary" id="buttonCancelCreateAccount">Cancel</button>
+      </form>
+    </div>
+
+
+    <!-- Bereich: areaPost -->
+    <div id="areaPost" style="background-color:lightgray">
+      <form id="postForm">
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter Message" aria-label="Enter Message"
+            aria-describedby="buttonPost">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bereich: areaMessages -->
+    <div id="areaMessages" style="background-color: rgb(203, 222, 228)">
+      <h3>Messages (bereichMessages)</h3>
+    </div>
+
+    <!-- Bereich: areaAccount -->
+    <div id="areaAccount">
+      <h3 style="margin-top:20px; margin-bottom:20px">Account</h3>
+      <p style="margin-bottom:0px"><em>E-Mail</em></p>
+      <p style="font-size: larger; margin-top:0px">dg@dietergreipl.de</p>
+
+      <p style="margin-bottom:0px"><em>Account State</em></p>
+      <p style="font-size: larger; margin-top:0px">verified</p>
+
+      <button type="button" class="btn btn-primary" id="si_button_create_account">Delete Account</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="modal-body">Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous">
+  </script>
+  <script>
+    const AREA_SIGN_IN = 1
+    const AREA_POST = 2
+    const AREA_CREATE_ACCOUNT = 3
+    const AREA_MESSAGES = 4
+    const AREA_ACCOUNT = 5
+
+    let state = {
+      signedIn: false,
+      visibleAreas: [AREA_SIGN_IN]
+    }
+
+    function updateUi() {
+      areaSignIn.style.display = state.visibleAreas.includes(AREA_SIGN_IN) ? "block" : "none"
+      areaPost.style.display = state.visibleAreas.includes(AREA_POST) ? "block" : "none"
+      areaMessages.style.display = state.visibleAreas.includes(AREA_MESSAGES) ? "block" : "none"
+      areaCreateAccount.style.display = state.visibleAreas.includes(AREA_CREATE_ACCOUNT) ? "block" : "none"
+      areaAccount.style.display = state.visibleAreas.includes(AREA_ACCOUNT) ? "block" : "none"
+    }
+
+
+    // ---------------  Navigation Logic ----------------------------------
+    const nav_sign_in = document.getElementById('nav_sign_in');
+    const nav_sign_out = document.getElementById('nav_sign_out');
+    const nav_account = document.getElementById('nav_account')
+
+    nav_sign_in.addEventListener('click', () => {
+      // https://getbootstrap.com/docs/4.3/components/modal/#via-data-attributes
+      //displayModal("Note","Sign In is not yet implemented!")
+      state.visibleAreas = [AREA_SIGN_IN]
+      updateUi()
+    });
+
+    nav_sign_out.addEventListener('click', () => {
+      // https://getbootstrap.com/docs/4.3/components/modal/#via-data-attributes
+      //displayModal("Note","Sign In is not yet implemented!")
+      state.visibleAreas = [AREA_SIGN_IN]
+      updateUi()
+    });
+
+    nav_account.addEventListener('click', () => {
+      // https://getbootstrap.com/docs/4.3/components/modal/#via-data-attributes
+      //displayModal("Note","Sign In is not yet implemented!")
+      state.visibleAreas = [AREA_ACCOUNT]
+      updateUi()
+    });
+
+
+    // ---  Code for SignInArea ----------------------------------------------------
+    const buttonSignIn = document.getElementById('si_button_sign_in')
+    const buttonSignInCreateAccount = document.getElementById('si_button_create_account')
+    const signInEmail = document.getElementById('si_email')
+    const signInPassword = document.getElementById('si_password')
+
+    buttonSignInCreateAccount.addEventListener('click', () => {
+      state.visibleAreas = [AREA_CREATE_ACCOUNT]
+      updateUi();
+    })
+
+    buttonSignIn.addEventListener('click', () => {
+      const email = signInEmail.value
+      const password = signInPassword.value
+      console.log(email, "/", password.length)
+
+      if (password.length < 6) {
+        displayModal("Sign In Error", "Password too short.")
+      }
+    })
+
+    
+    /*
+        buSignOut.addEventListener('click', () => {
+          if (auth.currentUser) {
+            // User is signed in; allows user to sign out
+            signOut(auth);
+          } else {
+            // No user is signed in; allows user to sign in
+            ui.start('#firebaseui-auth-container', uiConfig);
+          }
+        });
+
+    */
+
+    function createPostLi(title, body) {
+
+      const span1 = document.createElement('span');
+      span1.textContent = "to be defined" //title;
+      span1.class = 'w3-large';
+
+      const br = document.createElement('br');
+
+      // Zeile 2
+      const span2 = document.createElement('span');
+      span2.textContent = body;
+
+      const div = document.createElement('div');
+      div.className = 'w3-bar-item';
+
+      div.appendChild(span1);
+      div.appendChild(br);
+      div.appendChild(span2);
+
+      const li = document.createElement('li');
+      li.className = 'w3-bar';
+      li.appendChild(div);
+
+      return li;
+
+    };
+
+
+    function displayModal(title, body) {
+      options = {
+        keyboard: false
+      }
+
+      const myModal = new bootstrap.Modal('#myModal', options)
+      document.getElementById("modal-title").textContent = title
+      document.getElementById("modal-body").textContent = body
+      myModal.show()
+
+    }
+
+    function setTestValues() {
+      signInEmail.value = "dietergreipl@gmail.com"
+      signInPassword.value = "123456"
+    }
+
+    setTestValues();
+    updateUi();
+  </script>
+</body>
+
+</html>
