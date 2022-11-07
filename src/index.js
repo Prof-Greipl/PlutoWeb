@@ -68,6 +68,22 @@ async function main() {
       updateUi();
     }
   });
+
+  const me_ul = document.getElementById("me_ul");
+  console.log("Called onSnapShot");
+  const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+
+  onSnapshot(q, (snaps) => {
+    // Cear Messages Area with ul-Tag
+    me_ul.innerHTML = "";
+
+    // Loop through documents in database
+    snaps.forEach((doc) => {
+      console.log("Adding...:");
+      let li = createPostLi(doc.data().author, doc.data().body);
+      me_ul.appendChild(li);
+    });
+  });
 }
 
 const AREA_SIGN_IN = 1;
@@ -227,7 +243,7 @@ buttonDeleteAccount.addEventListener("click", () => {
 // Code for Messages Area ----------------------------------------------------
 const me_button_post = document.getElementById("me_button_send");
 me_button_post.addEventListener("click", () => {
-  let body = document.getElementById("me_body_text").value
+  let body = document.getElementById("me_body_text").value;
   console.log("SUbmit...");
   // Prevent the default form redirect
   //e.preventDefault();
@@ -242,7 +258,7 @@ me_button_post.addEventListener("click", () => {
     uid: auth.currentUser.uid,
   })
     .then(() => {
-      console.log("Successfzlly written.");
+      console.log("Successfully written.");
     })
     .catch((error) => {
       console.log("Adding doc failed: ", error);
@@ -251,10 +267,9 @@ me_button_post.addEventListener("click", () => {
   return false;
 });
 
-function createPostLi(title, body) {
+function createPostLi(author, body) {
   const span1 = document.createElement("span");
-  span1.textContent = "to be defined"; //title;
-  span1.class = "w3-large";
+  span1.textContent = author; //title;
 
   const br = document.createElement("br");
 
@@ -263,14 +278,13 @@ function createPostLi(title, body) {
   span2.textContent = body;
 
   const div = document.createElement("div");
-  div.className = "w3-bar-item";
 
   div.appendChild(span1);
   div.appendChild(br);
   div.appendChild(span2);
 
   const li = document.createElement("li");
-  li.className = "w3-bar";
+  li.className = "list-group-item";
   li.appendChild(div);
 
   return li;
@@ -287,17 +301,15 @@ function displayModal(title, body) {
   myModal.show();
 }
 
-function setTestValues() {
-  signInEmail.value = "dietergreipl@gmail.com";
-  signInPassword.value = "123456";
-}
-
 let state = {
   user: null,
-  visibleAreas: [AREA_SIGN_IN],
+  visibleAreas: [],
 };
 
+// Set Testvalues
+signInEmail.value = "dietergreipl@gmail.com";
+signInPassword.value = "123456";
+//let me_ul = document.getElementById('me_ul');
+//me_ul.appendChild(createPostLi("Mail 1", "Message 1"));
+//me_ul.appendChild(createPostLi("Mail 2", "Message 2"));
 main();
-
-setTestValues();
-updateUi();
