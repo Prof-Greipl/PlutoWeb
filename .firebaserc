@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "pluto22-gkw"
-  }
+    "pluto-dev": "pluto-dev-1a727",
+    "default": "pluto-dev-1a727"
+  },
+  "targets": {},
+  "etags": {}
 }

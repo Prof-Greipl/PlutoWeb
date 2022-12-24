@@ -22,11 +22,11 @@
 <body>
 
 
-  <div id="app" style="display:none" class="container" style="margin-top:20px">
-
+  <div id="app"  class="container" style="margin-top:20px">
+  
     <!-- Navbar  https://getbootstrap.com/docs/5.0/components/navbar/ -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#" id="nav_pluto23">Pluto23 Web</a>
+      <a class="navbar-brand" href="#" id="nav_pluto23">Pluto [pluto-dev]</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1"
         aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,9 +34,6 @@
       <div class="collapse navbar-collapse" id="navbarNav1">
         <ul class="navbar-nav mr-auto">
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" id="nav_home">Home</a>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link" href="#" id="nav_sign_out">Sign Out</a>
@@ -54,14 +51,23 @@
       </div>
     </nav>
 
+    <div class="spinner-border" role="status" id="spinner">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
+
+<!--
+    <h3>Diese Testapp ist momentan nicht nutzbar.</h3>
+-->
+
     <!-- Bereich: areaSignIn -->
     <div id="areaSignIn">
-      <h3 style="margin-top:20px">Sign In</h3>
+      <h3 style="margin-top:20px">Sign In</h3>    
       <form id="signInForm">
         <div class="mb-3">
           <label for="si_email" class="form-label">Email address</label>
           <input type="email" class="form-control" id="si_email" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">area-describedby Text</div>
+          <div id="emailHelp" class="form-text">We will not publish your E-Mail address</div>
         </div>
         <div class="mb-3">
           <label for="si_password" class="form-label">Password</label>
@@ -94,7 +100,6 @@
       </form>
     </div>
 
-
     <!-- Bereich: areaPost -->
     <div id="areaMessages">
       <form id="postForm">
@@ -107,7 +112,6 @@
           </div>
         </div>
       </form>
-
       <ul class="list-group" id="me_ul">
           
       </ul>
@@ -119,11 +123,19 @@
       <p style="margin-bottom:0px"><em>E-Mail</em></p>
       <p style="font-size: larger; margin-top:0px" id="ac_email">dg@dietergreipl.de</p>
 
-      <p style="margin-bottom:0px"><em>Account State</em></p>
-      <p style="font-size: larger; margin-top:0px" id="ac_verified">verified</p>
+      <div id="ac_verification_div" class="alert alert-warning" role="alert">
+        Your account is not yet verified. User the link below to verify your account. You can also delete your account.</br>
+       <button style="margin-top:10px;" type="button" class="btn btn-primary" id="ac_button_verify_account">Send verification mail</button>
+      </div>
 
-      <button type="button" class="btn btn-primary" id="ac_button_delete_account">Delete Account</button>
-      <p>Make sure that your signed in some minutes before deleting your account.</p>
+
+      <form style="margin-top:30px;">
+        <div class="mb-3">
+          <label for="ca_password2" class="form-label">If you want to delete your account, pls enter your password for security reasons. </label>
+          <input type="password" class="form-control" id="ca_password2">
+        </div>
+        <button type="submit" class="btn btn-primary" id="ac_button_delete_account">Delete Account</button>
+      </form>
     </div>
 
     <!-- Modal -->
@@ -138,8 +150,7 @@
             <p id="modal-body">Modal body text goes here.</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

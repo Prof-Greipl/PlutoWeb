@@ -148,7 +148,7 @@ Link for this chapter: https://firebase.google.com/docs/hosting/quickstart
 Run 
 
 ```
-firebas init hosting
+firebase init hosting
 ```
 
 and answer the questions. Your lecturer will support you. This will create a file with name `firebase.json`

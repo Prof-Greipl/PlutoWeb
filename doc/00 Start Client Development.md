@@ -40,13 +40,29 @@ Check: https://getbootstrap.com/docs/4.3/getting-started/introduction/
 
 ## Add Areas
 
+| Area         |
+| ------------ |
+| areaSignIn   |
+| areaPost     |
+| areaMessages |
+
+
+
 We have the following areas:
 
-| Area         | Action Elements |      |
-| ------------ | --------------- | ---- |
-| areaSignIn   | ButtonSignIn    |      |
-| areaPost     |                 |      |
-| areaMessages |                 |      |
+| Area         | Action Elements                                              |      |
+| ------------ | ------------------------------------------------------------ | ---- |
+| areaSignIn   | ButtonSignIn<br />ButtonCreateAccount<br />signInEmail<br />signInPassword |      |
+| areaPost     |                                                              |      |
+| areaMessages |                                                              |      |
+
+| Area       | Action Elements (id) |
+| ---------- | -------------------- |
+| areaSignIn | ButtonSignIn         |
+|            | ButtonCreateAccount  |
+|            | signInEmail          |
+|            | signInPassword       |
+| areaPost   |                      |
 
 ### AreaSignIn
 

@@ -1,0 +1,5 @@
+firebase emulators:start
+firebase Login
+firebase logout
+firebase init // Projekt initialisieren
+firebase add // Projekt hinzufügen.
