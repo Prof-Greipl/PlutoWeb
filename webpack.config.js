@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
 	clean: true
   },
@@ -30,4 +30,12 @@ module.exports = {
   // Optional and for development only. This provides the ability to
   // map the built code back to the original source format when debugging.
   devtool: 'eval-source-map',
+
+  // dg For compiling after save
+  // Read this: https://webpack.js.org/configuration/watch/#watch
+  watchOptions: {
+    ignored: '**/node_modules',
+    aggregateTimeout: 200,
+    poll: 1000,
+  },
 };
